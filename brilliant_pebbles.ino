@@ -66,7 +66,6 @@ void loop() {
     jumpMode();
   }
   else {
-      digitalWrite(BLUE_LED,LOW);
       standbyMode();
   }
 
