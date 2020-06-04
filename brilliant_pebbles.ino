@@ -38,6 +38,9 @@ int alarmAltitudes[3] = {305,1220,1676}; //altitudes in metres
 int alarmDurations[3] = {1000,3000,3000}; //durations in milliseconds
 byte alarmTones[3] = {5,3,2};
 
+int hardDeckAlarm[3] = {600, 4000, 2}; //altitude in metres, duration in msecs and alarm tone
+bool harddeckEnabled = true;
+
 #define alt_trigger 30 //jump mode trigger altitude
 bool climb_beeps_en = true;
 
@@ -118,6 +121,11 @@ void jumpMode() {
     alarmat(alarmAltitudes[i],tones[k][0],tones[k][1],500,alarmDurations[i],tones[k][2]);
   }
  
+  //harddeck, on the way down.
+  if( harddeckEnabled )
+    alarmat(hardDeckAlarm[0], tones[hardDeckAlarm[2]][0], tones[hardDeckAlarm[2]][1], 500, \
+            hardDeckAlarm[1], tones[hardDeckAlarm[2]][2]);
+
   if ((alt < alt_trigger) && (jumptime > 260)) {
     altstate = 0; //go to standby mode
     jumptime = 0;
