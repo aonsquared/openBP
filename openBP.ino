@@ -3,6 +3,7 @@
 #define RED_LED 8
 #define BLUE_LED 9
 #define speakerOut 4
+#define speakerOut2 5
 #define POWER_PIN 6
 
 #define BEEP_LONG 238
@@ -43,11 +44,13 @@ bool climb_beeps_en = true;
 
 void setup() {
   pinMode(speakerOut,OUTPUT);
+  pinMode(speakerOut2,OUTPUT);
   pinMode(POWER_PIN,INPUT);
   pinMode(BLUE_LED,OUTPUT);
   pinMode(RED_LED,OUTPUT);
   digitalWrite(BLUE_LED,LOW);
   digitalWrite(RED_LED, LOW);
+  digitalWrite(speakerOut2,LOW);
   playTone(210,D_SHORT,70,BEEP_SHORT); //power on beep
 //################################################################
 //--------------check if the barometer is working-----------------
@@ -165,5 +168,3 @@ void zero_alti() {
   altm2 = 0;
   altm1 = 0;
 }
-
-
