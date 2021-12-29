@@ -13,6 +13,10 @@
 #define D_MED 1000
 #define D_LONG 3000
 
+//this is for newer versions of the hardware
+#define VOL1 1
+#define VOL2 0
+
 Adafruit_BMP280 bmp;
 
 unsigned long start;
@@ -48,6 +52,10 @@ void setup() {
   pinMode(POWER_PIN,INPUT);
   pinMode(BLUE_LED,OUTPUT);
   pinMode(RED_LED,OUTPUT);
+  //turn on the driver chip for newer hardware versions
+  digitalWrite(VOL1, HIGH);
+  digitalWrite(VOL2, HIGH);
+  
   digitalWrite(BLUE_LED,LOW);
   digitalWrite(RED_LED, LOW);
   digitalWrite(speakerOut2,LOW);
